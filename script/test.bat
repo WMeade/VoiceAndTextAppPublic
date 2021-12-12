@@ -1,0 +1,1 @@
+Cscript.exe ../node_modules/.bin/mocha ../test/test.js

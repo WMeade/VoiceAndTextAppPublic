@@ -1,0 +1,84 @@
+<html id="htmlPage">
+    <head>
+        <title>VAT communication app</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+    </head>
+
+    <div class="modal text-light" id="myModal">
+    <div class="modal-dialog modal-dialog-centered" >
+      <div class="modal-content" style="background-color: #2f3136;">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Friend</h4>
+              </div>
+              <div class="modal-body">
+                <label for="username" class="form-label">Username:</label>
+                <input type="username" name="username" required="required" class="form-control text-light" id="username" style="background-color: #40444b;">
+              </div>
+              <div class="modal-body">
+                <div class="overflow-hidden">
+                    <div id="results">
+                    </div>  
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn text-white" style="background-color: #016aa8" onclick="emitRequest()">Search</button>
+            </div>
+       </div>
+    </div>
+  </div>
+    
+  <div class="modal text-light" id="invitesInbox">
+    <div class="modal-dialog modal-dialog-centered" >
+      <div class="modal-content" style="background-color: #2f3136;">
+            <div class="modal-header">
+                <h4 class="modal-title">Invites Inbox</h4>
+              </div>
+              <div class="modal-body">
+                <div class="overflow-hidden">
+                    <div id="resultsInvites">
+                    </div>  
+                </div>
+              </div>
+       </div>
+    </div>
+  </div>
+    
+  <body class="text-light" style="background-color: #202225;">
+        <row style="min-width: 50em;">
+            <div class="jumbotron mt-3" style="background-color: #2f3136; min-width: 30em; width: 30em; border: 0.1em solid #016aa8; display: inline-block; margin-left: 1.8em;">
+                <h3 id="usernamedisplay" class="display-4 text-center">  </h3>
+            </div>
+            <div  style="width: 10em; margin-left: 0.9em; margin-top:0.6em; display: inline-block;">
+                <button class="btn btn-block text-white mt-2" style="background-color: #016aa8;" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                <button type="button" class="btn btn-block mt-2 mb-2 text-light" style="background-color: #016aa8;" data-toggle="modal" data-target="#invitesInbox">
+                    Invites <span class="badge badge-light ml-2" id="inviteNotifs"></span>
+                </button>
+                <a href="\logout" class="btn btn-block btn-danger" role="button" aria-pressed="true">Logout <img class="ml-1" src="/images/logout.png"></a>
+            </div>
+            <div aria-live="polite" aria-atomic="true" style="position: relative;"></div>
+                <div style="position: absolute; top: 0; right: 0;" id="liveNotifications">
+                </div>
+            </div>
+        </row>
+        <div> 
+            <div class="overflow-auto" style="width: 22em; margin-left: 1em; margin-top: -1.5em; display: inline-block;">
+                <ul class="list-group col-11 mx-auto" id="mainList">
+                </ul>
+            </div>
+            <div class="ml-2" style="width: 11em;">
+               
+            </div>
+        </div>
+        <div  id="mainBody">
+            
+        </div>
+        </body>
+        <script>loggedArray = <%-JSON.stringify(userinformation)%></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/clientSide.js"></script> 
+    </body>
+</html>

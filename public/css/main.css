@@ -1,0 +1,15 @@
+body, html {
+    height: 100vh;
+}
+
+.borderFriends{
+    border-left: 0.2em solid #016aa8;
+}
+
+.sideBar{
+    min-height: 100% ;
+}
+
+.dropdown .dropdown-menu a:hover{
+    background-color: black;
+}
